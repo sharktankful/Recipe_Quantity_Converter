@@ -20,24 +20,32 @@ while operator_lower != "multiplied" and operator_lower != "divided":
 
 # Empty list to store the ingredients and the measurments for each ingredient
 ingredient_list = []
+amount_list = []
 measurement_list = []
 
+
 # Asks for the first ingredient and measurement and puts it into the list
-ingredients = input("Enter in your first ingredient here:  ")
-ingredients_lower = ingredients.lower()
-ingredient_list.append(ingredients_lower)
+ingredient = input("Enter in your first ingredient here:  ")
+ingredient_lower = ingredient.lower()
+ingredient_list.append(ingredient_lower)
+amount = int(input(f"Enter in the amount for {ingredient}: "))
+amount_list.append(amount)
+amount_list.append(amount)
 measurement = input("What is the measurement?: ")
 measurement_list.append(measurement)
 
+
 # Keeps for asking for ingredients and measurements, stores them in the appropriate list
 # and will keep asking until the word 'done' is typed in.
-while ingredients != "done":
-    ingredients = input(
+while ingredient != "done":
+    ingredient = input(
         "Please enter in another ingredient or type 'Done' to finish: ")
-    ingredients_lower = ingredients.lower()
-    if ingredients == "done":
+    ingredient_lower = ingredient.lower()
+    if ingredient == "done":
         break
-    ingredient_list.append(ingredients_lower)
+    ingredient_list.append(ingredient_lower)
+    amount = int(input(f"Enter in the amount for {ingredient}: "))
+    amount_list.append(amount)
     measurement = input("What is the measurement?: ")
     measurement_list.append(measurement)
 
