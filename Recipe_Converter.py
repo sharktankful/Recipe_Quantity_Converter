@@ -1,3 +1,5 @@
+from defined_functions import prompt_for_int
+
 # Takes in the initial Recipe Name
 recipe_name = input("Please enter in the name of your recipe here: ")
 
@@ -28,15 +30,7 @@ measurement_list = []
 ingredient = input("Enter in your first ingredient here:  ")
 ingredient_lower = ingredient.lower()
 ingredient_list.append(ingredient_lower)
-# While loop Checks if "amount" variable is a number
-while True:
-    try:
-        amount = int(input(f"Enter in the amount for {ingredient}: "))
-    except ValueError:
-        print("This is not a number")
-        continue
-    else:
-        break
+amount = prompt_for_int(f"Enter in the amount for {ingredient}: ")
 amount_list.append(amount)
 measurement = input("What is the measurement?: ")
 measurement_list.append(measurement)
@@ -51,20 +45,12 @@ while ingredient != "done":
     if ingredient_lower == "done":
         break
     ingredient_list.append(ingredient_lower)
-    # While loop checks if "amount" is a number
-    while True:
-        try:
-            amount = int(input(f"Enter in the amount for {ingredient}: "))
-        except ValueError:
-            print("This is not a number")
-            continue
-        else:
-            break
+    amount = prompt_for_int(f"Enter in the amount for {ingredient}: ")
     amount_list.append(amount)
     measurement = input("What is the measurement?: ")
     measurement_list.append(measurement)
 
 
 # Asks by what number do you want the ingredients multiplied or divided
-operator_amount = int(
-    input(f"By how much do you want your {recipe_name} recipe {operator_lower}? Enter here: "))
+operator_amount = prompt_for_int(
+    f"By how much do you want your {recipe_name} recipe {operator_lower}? Enter here: ")
