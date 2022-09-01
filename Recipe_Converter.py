@@ -24,12 +24,18 @@ amount_list = []
 measurement_list = []
 
 
-# Asks for the first ingredient and measurement and puts it into the list
+# Asks for the first ingredient, amount, and measurement and puts it in one of the lists
 ingredient = input("Enter in your first ingredient here:  ")
 ingredient_lower = ingredient.lower()
 ingredient_list.append(ingredient_lower)
-amount = int(input(f"Enter in the amount for {ingredient}: "))
-amount_list.append(amount)
+while True:
+    try:
+        amount = int(input(f"Enter in the amount for {ingredient}: "))
+    except ValueError:
+        print("This is not a number")
+        continue
+    else:
+        break
 amount_list.append(amount)
 measurement = input("What is the measurement?: ")
 measurement_list.append(measurement)
