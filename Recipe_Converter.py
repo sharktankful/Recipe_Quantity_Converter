@@ -28,6 +28,7 @@ measurement_list = []
 ingredient = input("Enter in your first ingredient here:  ")
 ingredient_lower = ingredient.lower()
 ingredient_list.append(ingredient_lower)
+amount = int(input(f"Enter in the amount for {ingredient}: "))
 while True:
     try:
         amount = int(input(f"Enter in the amount for {ingredient}: "))
