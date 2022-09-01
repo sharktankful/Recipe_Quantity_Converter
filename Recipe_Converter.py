@@ -28,7 +28,7 @@ measurement_list = []
 ingredient = input("Enter in your first ingredient here:  ")
 ingredient_lower = ingredient.lower()
 ingredient_list.append(ingredient_lower)
-amount = int(input(f"Enter in the amount for {ingredient}: "))
+# While loop Checks if "amount" variable is a number
 while True:
     try:
         amount = int(input(f"Enter in the amount for {ingredient}: "))
@@ -48,10 +48,18 @@ while ingredient != "done":
     ingredient = input(
         "Please enter in another ingredient or type 'Done' to finish: ")
     ingredient_lower = ingredient.lower()
-    if ingredient == "done":
+    if ingredient_lower == "done":
         break
     ingredient_list.append(ingredient_lower)
-    amount = int(input(f"Enter in the amount for {ingredient}: "))
+    # While loop checks if "amount" is a number
+    while True:
+        try:
+            amount = int(input(f"Enter in the amount for {ingredient}: "))
+        except ValueError:
+            print("This is not a number")
+            continue
+        else:
+            break
     amount_list.append(amount)
     measurement = input("What is the measurement?: ")
     measurement_list.append(measurement)
@@ -59,4 +67,4 @@ while ingredient != "done":
 
 # Asks by what number do you want the ingredients multiplied or divided
 operator_amount = int(
-    input(f"By how much do you want it {operator_lower}? Enter here: "))
+    input(f"By how much do you want your {recipe_name} recipe {operator_lower}? Enter here: "))
