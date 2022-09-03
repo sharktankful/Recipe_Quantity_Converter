@@ -29,6 +29,7 @@ while operator_lower != "multiplied" and operator_lower != "divided":
 ingredient_list = []
 amount_list = []
 measurement_list = []
+num_list = []
 
 
 # Asks for the first ingredient, amount, and measurement and puts it in one of the lists
@@ -56,14 +57,22 @@ while ingredient != "done":
     measurement_list.append(measurement)
 
 
+# Generates the numberered order of ingredients entered in
+count = 0
+for x in ingredient_list:
+    count += 1
+    str_count = str(count)
+    num_list.append(str_count + ".")
+
+
 # Asks by what number do you want the ingredients multiplied or divided
 operator_amount = prompt_for_int(
     f"By how much do you want your {recipe_name} recipe {operator_lower}? Enter here: ")
 
 
-# Takes the three lists with the collected data and prints them together to show the converted results
+# Takes the four lists with the collected data and prints them together to show the converted results
 recipe_cap = recipe_name.upper()
 print(f"This is your recipe {operator_lower} {operator_amount} times {size}:")
 print("\x1B[4m" + recipe_cap + " INGREDIENTS" + "\x1B[0m")
-[print(x, y, z)
- for x, y, z in zip(ingredient_list, amount_list, measurement_list)]
+[print(w, x, y, z)
+ for w, x, y, z in zip(num_list, ingredient_list, amount_list, measurement_list)]
