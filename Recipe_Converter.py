@@ -10,6 +10,11 @@ math_operator = input(
     f"Do you want {recipe_name} multiplied or divided? Enter here: ")
 operator_lower = math_operator.lower()
 
+# If operator_lower equals multiplied or divided, this variable will equal these words
+if operator_lower == "multiplied":
+    size = "bigger"
+elif operator_lower == "divided":
+    size = "smaller"
 
 # If the variable math_operator does not equal 'multiplied' or 'divided'
 # the 'while loop' will keep asking for the correct word
@@ -54,3 +59,11 @@ while ingredient != "done":
 # Asks by what number do you want the ingredients multiplied or divided
 operator_amount = prompt_for_int(
     f"By how much do you want your {recipe_name} recipe {operator_lower}? Enter here: ")
+
+
+# Takes the three lists with the collected data and prints them together to show the converted results
+recipe_cap = recipe_name.upper()
+print(f"This is your recipe {operator_lower} {operator_amount} times {size}:")
+print("\x1B[4m" + recipe_cap + " INGREDIENTS" + "\x1B[0m")
+[print(x, y, z)
+ for x, y, z in zip(ingredient_list, amount_list, measurement_list)]
