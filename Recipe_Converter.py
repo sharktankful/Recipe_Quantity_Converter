@@ -1,6 +1,7 @@
 from defined_functions import prompt_for_frac, prompt_for_int
 from fractions import Fraction
 
+
 # Takes in the initial Recipe Name
 recipe_name = input("Please enter in the name of your recipe here: ")
 
@@ -35,28 +36,28 @@ altered_list = []
 
 
 # Asks for the first ingredient, amount, and measurement and puts it in one of the lists
-ingredient = input("Enter in your first ingredient here:  ")
-ingredient_lower = ingredient.lower()
-ingredient_list.append(ingredient_lower)
+ingredient = input("Enter in your first ingredient here: ")
+ingredient_cap = ingredient.capitalize()
+ingredient_list.append(ingredient_cap)
 amount = prompt_for_frac(f"Enter in the amount for {ingredient}: ")
 amount_list.append(amount)
 measurement = input("What is the measurement?: ")
-measurement_list.append(measurement)
+measurement_list.append(measurement.capitalize())
 
 
 # Keeps for asking for ingredients and measurements, stores them in the appropriate list
-# and will keep asking until the word 'done' is typed in.
-while ingredient != "done":
+# and will keep asking until the word 'Done' is typed in.
+while ingredient != "Done":
     ingredient = input(
         "Please enter in another ingredient or type 'Done' to finish: ")
-    ingredient_lower = ingredient.lower()
-    if ingredient_lower == "done":
+    ingredient_cap = ingredient.capitalize()
+    if ingredient_cap == "Done":
         break
-    ingredient_list.append(ingredient_lower)
+    ingredient_list.append(ingredient_cap)
     amount = prompt_for_frac(f"Enter in the amount for {ingredient}: ")
     amount_list.append(amount)
     measurement = input("What is the measurement?: ")
-    measurement_list.append(measurement)
+    measurement_list.append(measurement.capitalize())
 
 
 # Generates the numberered order of ingredients entered in
@@ -92,5 +93,5 @@ print('''
 ''')
 print("\x1B[4m" + recipe_cap + " INGREDIENTS" + "\x1B[0m")
 [print(w, x, y, z)
- for w, x, y, z in zip(num_list, ingredient_list, altered_list, measurement_list)]
+ for w, x, y, z in zip(num_list, altered_list, measurement_list, ingredient_list)]
 print("----------------------------------------------------------------------------------")
