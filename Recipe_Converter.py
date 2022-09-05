@@ -1,4 +1,4 @@
-from defined_functions import prompt_for_int
+from defined_functions import prompt_for_frac, prompt_for_int
 from fractions import Fraction
 
 # Takes in the initial Recipe Name
@@ -38,7 +38,7 @@ altered_list = []
 ingredient = input("Enter in your first ingredient here:  ")
 ingredient_lower = ingredient.lower()
 ingredient_list.append(ingredient_lower)
-amount = prompt_for_int(f"Enter in the amount for {ingredient}: ")
+amount = prompt_for_frac(f"Enter in the amount for {ingredient}: ")
 amount_list.append(amount)
 measurement = input("What is the measurement?: ")
 measurement_list.append(measurement)
@@ -53,7 +53,7 @@ while ingredient != "done":
     if ingredient_lower == "done":
         break
     ingredient_list.append(ingredient_lower)
-    amount = prompt_for_int(f"Enter in the amount for {ingredient}: ")
+    amount = prompt_for_frac(f"Enter in the amount for {ingredient}: ")
     amount_list.append(amount)
     measurement = input("What is the measurement?: ")
     measurement_list.append(measurement)
