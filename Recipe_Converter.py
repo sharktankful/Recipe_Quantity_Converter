@@ -1,4 +1,5 @@
 from defined_functions import prompt_for_int
+from fractions import Fraction
 
 # Takes in the initial Recipe Name
 recipe_name = input("Please enter in the name of your recipe here: ")
@@ -30,6 +31,7 @@ ingredient_list = []
 amount_list = []
 measurement_list = []
 num_list = []
+altered_list = []
 
 
 # Asks for the first ingredient, amount, and measurement and puts it in one of the lists
@@ -70,9 +72,25 @@ operator_amount = prompt_for_int(
     f"By how much do you want your {recipe_name} recipe {operator_lower}? Enter here: ")
 
 
+# Will take the data in amount_list and will either multiply or divide the data into a new list
+for num in amount_list:
+    if math_operator == "multiplied":
+        mul = num * operator_amount
+        frac_mul = str(Fraction(mul).limit_denominator())
+        altered_list.append(frac_mul)
+    elif math_operator == "divided":
+        div = num / operator_amount
+        frac_div = str(Fraction(div).limit_denominator())
+        altered_list.append(frac_div)
+
+
 # Takes the four lists with the collected data and prints them together to show the converted results
 recipe_cap = recipe_name.upper()
+print("----------------------------------------------------------------------------------")
 print(f"This is your recipe {operator_lower} {operator_amount} times {size}:")
+print('''
+''')
 print("\x1B[4m" + recipe_cap + " INGREDIENTS" + "\x1B[0m")
 [print(w, x, y, z)
- for w, x, y, z in zip(num_list, ingredient_list, amount_list, measurement_list)]
+ for w, x, y, z in zip(num_list, ingredient_list, altered_list, measurement_list)]
+print("----------------------------------------------------------------------------------")
